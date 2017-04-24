@@ -20,7 +20,6 @@ class DefinitionRequest{
     private var request: DataRequest!
     
     func getDefinitions(definitionForAcronym acronym: String, completion: @escaping completionHandler){
-        print(acronym)
         if request != nil{
             request.delegate.queue.cancelAllOperations()
         }

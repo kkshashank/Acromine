@@ -14,5 +14,4 @@ class DefinitionTableViewCell: UITableViewCell {
         textLabel?.text = title
         textLabel?.adjustsFontSizeToFitWidth = true
     }
-    
 }
