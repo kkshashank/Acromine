@@ -19,7 +19,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     @IBAction func searchAcronymPressed(_ sender: CustomUIButton) {
-       
+        searchBar.isHidden = false
+        tableView.isHidden = false
+        searchBar.becomeFirstResponder()
+        searchAcronymBTN.isHidden = true
+        definitionsForAcronym = [String]()
     }
 
     override func viewDidLoad() {
@@ -38,5 +42,37 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "DefinitionCell") as? DefinitionTableViewCell else {return UITableViewCell()}
         cell.configureCell(title: definitionsForAcronym[indexPath.row])
         return cell
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        titleOfAcronym.text = "Acromine"
+        definitionsForAcronym = [String]()
+        tableView.reloadData()
+        searchBar.text = nil
+        searchBar.isHidden = true
+        searchAcronymBTN.isHidden = false
+        tableView.isHidden = true
+        view.endEditing(true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        definitionsForAcronym = [String]()
+        if let userInput = searchBar.text, userInput != ""{
+            fetchDefinitions(userInputIn: userInput)
+        } else {
+            titleOfAcronym.text = "Acromine"
+        }
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let userInput = searchBar.text, userInput != ""{
+            fetchDefinitions(userInputIn: userInput)
+        }
+        view.endEditing(true)
+    }
+    
+    private func fetchDefinitions(userInputIn: String){
+       print(userInputIn)
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0178E481DE41008BB23D75AB /* Pods_Acromine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8472D8C7E43B3FBAD9D1974E /* Pods_Acromine.framework */; };
 		31BF135C1EADC6EA004CD3EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BF135B1EADC6EA004CD3EC /* AppDelegate.swift */; };
 		31BF13611EADC6EA004CD3EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31BF135F1EADC6EA004CD3EC /* Main.storyboard */; };
 		31BF13631EADC6EA004CD3EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BF13621EADC6EA004CD3EC /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1079AB53FFF39C137F67C98F /* Pods-Acromine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Acromine.release.xcconfig"; path = "Pods/Target Support Files/Pods-Acromine/Pods-Acromine.release.xcconfig"; sourceTree = "<group>"; };
 		31BF13581EADC6EA004CD3EC /* Acromine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Acromine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31BF135B1EADC6EA004CD3EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31BF13601EADC6EA004CD3EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -26,6 +28,8 @@
 		31BF13701EADC914004CD3EC /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		31BF13721EADC9EA004CD3EC /* CustomUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUIButton.swift; sourceTree = "<group>"; };
 		31BF13741EADCAAF004CD3EC /* DefinitionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefinitionTableViewCell.swift; sourceTree = "<group>"; };
+		5F7F92D6E784F7BE1697438B /* Pods-Acromine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Acromine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Acromine/Pods-Acromine.debug.xcconfig"; sourceTree = "<group>"; };
+		8472D8C7E43B3FBAD9D1974E /* Pods_Acromine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Acromine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0178E481DE41008BB23D75AB /* Pods_Acromine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +49,8 @@
 			children = (
 				31BF135A1EADC6EA004CD3EC /* Acromine */,
 				31BF13591EADC6EA004CD3EC /* Products */,
+				E6D0E0A1713CF27F023A8519 /* Pods */,
+				E5A0E5200DA9FDE8CF7480D5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +101,23 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		E5A0E5200DA9FDE8CF7480D5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8472D8C7E43B3FBAD9D1974E /* Pods_Acromine.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E6D0E0A1713CF27F023A8519 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5F7F92D6E784F7BE1697438B /* Pods-Acromine.debug.xcconfig */,
+				1079AB53FFF39C137F67C98F /* Pods-Acromine.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -101,9 +125,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 31BF136A1EADC6EA004CD3EC /* Build configuration list for PBXNativeTarget "Acromine" */;
 			buildPhases = (
+				AADDA40FDD23655AFB636131 /* [CP] Check Pods Manifest.lock */,
 				31BF13541EADC6EA004CD3EC /* Sources */,
 				31BF13551EADC6EA004CD3EC /* Frameworks */,
 				31BF13561EADC6EA004CD3EC /* Resources */,
+				FD81785FAB716B1041C42B6B /* [CP] Embed Pods Frameworks */,
+				0CC1BD0258B29554C5EC9E7D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -160,6 +187,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0CC1BD0258B29554C5EC9E7D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Acromine/Pods-Acromine-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AADDA40FDD23655AFB636131 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FD81785FAB716B1041C42B6B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Acromine/Pods-Acromine-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		31BF13541EADC6EA004CD3EC /* Sources */ = {
@@ -292,7 +367,9 @@
 		};
 		31BF136B1EADC6EA004CD3EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F7F92D6E784F7BE1697438B /* Pods-Acromine.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Acromine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -304,7 +381,9 @@
 		};
 		31BF136C1EADC6EA004CD3EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1079AB53FFF39C137F67C98F /* Pods-Acromine.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Acromine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -333,6 +412,7 @@
 				31BF136C1EADC6EA004CD3EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
