@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0178E481DE41008BB23D75AB /* Pods_Acromine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8472D8C7E43B3FBAD9D1974E /* Pods_Acromine.framework */; };
+		310B6E521EADDE360004F4E9 /* DefinitionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B6E511EADDE360004F4E9 /* DefinitionRequest.swift */; };
 		31BF135C1EADC6EA004CD3EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BF135B1EADC6EA004CD3EC /* AppDelegate.swift */; };
 		31BF13611EADC6EA004CD3EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31BF135F1EADC6EA004CD3EC /* Main.storyboard */; };
 		31BF13631EADC6EA004CD3EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31BF13621EADC6EA004CD3EC /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		1079AB53FFF39C137F67C98F /* Pods-Acromine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Acromine.release.xcconfig"; path = "Pods/Target Support Files/Pods-Acromine/Pods-Acromine.release.xcconfig"; sourceTree = "<group>"; };
+		310B6E511EADDE360004F4E9 /* DefinitionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefinitionRequest.swift; sourceTree = "<group>"; };
 		31BF13581EADC6EA004CD3EC /* Acromine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Acromine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31BF135B1EADC6EA004CD3EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31BF13601EADC6EA004CD3EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -44,6 +46,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		310B6E501EADDE150004F4E9 /* Network Manager */ = {
+			isa = PBXGroup;
+			children = (
+				310B6E511EADDE360004F4E9 /* DefinitionRequest.swift */,
+			);
+			name = "Network Manager";
+			sourceTree = "<group>";
+		};
+		310B6E531EADDF9F0004F4E9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				31BF135B1EADC6EA004CD3EC /* AppDelegate.swift */,
+				31BF13671EADC6EA004CD3EC /* Info.plist */,
+				31BF13641EADC6EA004CD3EC /* LaunchScreen.storyboard */,
+				31BF13621EADC6EA004CD3EC /* Assets.xcassets */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		31BF134F1EADC6EA004CD3EC = {
 			isa = PBXGroup;
 			children = (
@@ -65,14 +86,12 @@
 		31BF135A1EADC6EA004CD3EC /* Acromine */ = {
 			isa = PBXGroup;
 			children = (
+				310B6E501EADDE150004F4E9 /* Network Manager */,
 				31BF136D1EADC8DA004CD3EC /* Model */,
 				31BF136E1EADC8E4004CD3EC /* View */,
 				31BF136F1EADC8EA004CD3EC /* Controller */,
-				31BF135B1EADC6EA004CD3EC /* AppDelegate.swift */,
 				31BF135F1EADC6EA004CD3EC /* Main.storyboard */,
-				31BF13621EADC6EA004CD3EC /* Assets.xcassets */,
-				31BF13641EADC6EA004CD3EC /* LaunchScreen.storyboard */,
-				31BF13671EADC6EA004CD3EC /* Info.plist */,
+				310B6E531EADDF9F0004F4E9 /* Supporting Files */,
 			);
 			path = Acromine;
 			sourceTree = "<group>";
@@ -242,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31BF13751EADCAAF004CD3EC /* DefinitionTableViewCell.swift in Sources */,
+				310B6E521EADDE360004F4E9 /* DefinitionRequest.swift in Sources */,
 				31BF135C1EADC6EA004CD3EC /* AppDelegate.swift in Sources */,
 				31BF13711EADC914004CD3EC /* MainViewController.swift in Sources */,
 				31BF13731EADC9EA004CD3EC /* CustomUIButton.swift in Sources */,

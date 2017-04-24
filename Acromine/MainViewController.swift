@@ -73,6 +73,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func fetchDefinitions(userInputIn: String){
-       print(userInputIn)
+        titleOfAcronym.text = userInputIn.uppercased()
+        definitionsForAcronym = [String]()
+        DefinitionRequest.definitionRequestInstance.getDefinitions(definitionForAcronym: userInputIn, completion: { [weak weakSelf = self] (definitions, error) in
+            guard let meanings = definitions else {
+                print(error?.localizedDescription ?? "Unknown error")
+                return
+            }
+            weakSelf?.definitionsForAcronym = meanings
+            weakSelf?.tableView.reloadData()
+        })
     }
 }
