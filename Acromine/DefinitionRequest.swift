@@ -8,22 +8,25 @@
 
 import Alamofire
 
-class DefinitionRequest{
+class DefinitionRequest {
     
-    public static let definitionRequestInstance: DefinitionRequest = DefinitionRequest()
+    public static let sharedDefinitionRequest: DefinitionRequest = DefinitionRequest()
+    
+    //MARK: - GetDefinitionsFromURL
     
     private let baseURL = "http://www.nactem.ac.uk/software/acromine/dictionary.py"
-    private let baseURLExtension = "?sf="
+    private let baseURLDefinitionParameter = "?sf="
     
     typealias completionHandler = (_ data: [String]?, _ error: Error?) -> ()
     
     private var request: DataRequest!
     
-    func getDefinitions(definitionForAcronym acronym: String, completion: @escaping completionHandler){
-        if request != nil{
+    
+    func getDefinitions(definitionForAcronym acronym: String, completion: @escaping completionHandler) {
+        if request != nil {
             request.delegate.queue.cancelAllOperations()
         }
-        request = Alamofire.request("\(baseURL)\(baseURLExtension)\(acronym)").validate().responseJSON { [weak weakSelf = self] response in
+        request = Alamofire.request("\(baseURL)\(baseURLDefinitionParameter)\(acronym)").validate().responseJSON { [weak weakSelf = self] response in
             switch response.result {
             case .success:
                 //print("Validation Successful")
@@ -36,19 +39,21 @@ class DefinitionRequest{
         }
     }
     
+    //MARK: - JSONToDefinitions
+    
     private func getDataFromJSON(json: Any?) -> [String] {
         var definitions = [String]()
-        guard let dataArray = json as? [Dictionary<String,Any>] else{
-            return ["Error converting json to dictionary"]
+        guard let dataArray = json as? [Dictionary<String,Any>] else {
+            return ["Problem obtaining data"]
         }
-        for data in dataArray{
-            if let definitionsArray = data["lfs"] as? [Dictionary<String,Any>]{
-                for definition in definitionsArray{
+        for data in dataArray {
+            if let definitionsArray = data["lfs"] as? [Dictionary<String,Any>] {
+                for definition in definitionsArray {
                     definitions.append(definition["lf"] as! String)
                 }
             }
         }
-        return definitions.count == 0 ? ["No results found"]:definitions
+        return definitions.count == 0 ? [DefinitionsDataError.noResults.rawValue] : definitions
     }
     
 }

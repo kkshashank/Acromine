@@ -9,8 +9,8 @@
 
 import UIKit
 
-extension UIViewController{
-    func activityIndicatorSetup(viewTo: UIView) -> UIActivityIndicatorView{
+extension UIViewController {
+    func activityIndicatorSetup(viewTo: UIView) -> UIActivityIndicatorView {
         let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         activityIndicator.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         activityIndicator.color = UIColor.white

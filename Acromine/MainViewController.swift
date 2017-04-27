@@ -10,8 +10,8 @@ import UIKit
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var titleOfAcronym: UILabel!
-    @IBOutlet weak var searchAcronymBTN: UIButton!
+    @IBOutlet weak var titleOfAcronymLbl: UILabel!
+    @IBOutlet weak var searchAcronymBtn: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
@@ -19,19 +19,29 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     private var activityIndicator: UIActivityIndicatorView!
     
     
-    @IBAction func searchAcronymPressed(_ sender: CustomUIButton) {
-        searchBar.isHidden = false
-        tableView.isHidden = false
-        searchBar.becomeFirstResponder()
-        searchAcronymBTN.isHidden = true
-        definitionsForAcronym = [String]()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         activityIndicator = activityIndicatorSetup(viewTo: view)
     }
+    
+    @IBAction func searchAcronymPressed(_ sender: CustomUIButton) {
+        searchBar.isHidden = false
+        tableView.isHidden = false
+        searchBar.becomeFirstResponder()
+        searchAcronymBtn.isHidden = true
+        definitionsForAcronym = [String]()
+    }
+    
+    //MARK: - TableViewDelegate
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseOut], animations: {
+            cell.textLabel?.center.x += cell.contentView.bounds.width
+        }, completion: nil)
+    }
+    
+    //MARK: - TableViewDatasource
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -42,18 +52,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DefinitionCell") as? DefinitionTableViewCell else {return UITableViewCell()}
-        cell.configureCell(title: definitionsForAcronym[indexPath.row])
-        return cell
+        guard let definitionCell = tableView.dequeueReusableCell(withIdentifier: DefinitionTableViewCell.reuseID()) as? DefinitionTableViewCell else { return UITableViewCell() }
+        definitionCell.configureCell(title: definitionsForAcronym[indexPath.row])
+        return definitionCell
     }
     
+    //MARK: - SearchBarMethods
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        titleOfAcronym.text = "Acromine"
+        titleOfAcronymLbl.text = appTitle
         definitionsForAcronym = [String]()
         tableView.reloadData()
         searchBar.text = nil
         searchBar.isHidden = true
-        searchAcronymBTN.isHidden = false
+        searchAcronymBtn.isHidden = false
         tableView.isHidden = true
         view.endEditing(true)
         activityIndicator.stopAnimating()
@@ -61,29 +73,31 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         definitionsForAcronym = [String]()
-        if let userInput = searchBar.text, userInput != ""{
-            fetchDefinitions(userInputIn: userInput)
+        if searchText.isEmpty {
+            titleOfAcronymLbl.text = appTitle
+            tableView.reloadData()
         } else {
-            titleOfAcronym.text = "Acromine"
+            fetchDefinitions(userInputIn: searchText)
         }
-        tableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let userInput = searchBar.text, userInput != ""{
+        if let userInput = searchBar.text, !userInput.isEmpty {
             fetchDefinitions(userInputIn: userInput)
         }
         view.endEditing(true)
     }
     
-    private func fetchDefinitions(userInputIn: String){
+    //MARK: - FetchDefinitionService
+    
+    private func fetchDefinitions(userInputIn: String) {
         activityIndicator.startAnimating()
-        titleOfAcronym.text = userInputIn.uppercased()
+        titleOfAcronymLbl.text = userInputIn.uppercased()
         definitionsForAcronym = [String]()
-        DefinitionRequest.definitionRequestInstance.getDefinitions(definitionForAcronym: userInputIn, completion: { [weak weakSelf = self] (definitions, error) in
+        DefinitionRequest.sharedDefinitionRequest.getDefinitions(definitionForAcronym: userInputIn, completion: { [weak weakSelf = self] (definitions, error) in
             guard let meanings = definitions else {
                 weakSelf?.activityIndicator.stopAnimating()
-                weakSelf?.alert(message: (error?.localizedDescription) ?? "Please try again!!!")
+                weakSelf?.alert(message: (error?.localizedDescription) ?? "Please try again!!!", titleAlert: "Sorry!!!")
                 return
             }
             weakSelf?.definitionsForAcronym = meanings
@@ -93,18 +107,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 }
 
-extension MainViewController{
-    func hideKeyboardWhenTappedAround(){
+extension MainViewController {
+    
+    func hideKeyboardWhenTappedAround() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
     
-    func dismissKeyboard(){
+    func dismissKeyboard() {
         view.endEditing(true)
     }
     
-    func alert(message: String){
-        let alertController = UIAlertController(title: "Sorry, please try again!!!", message: message, preferredStyle: .alert)
+    func alert(message: String, titleAlert: String) {
+        let alertController = UIAlertController(title: titleAlert, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)
     }

@@ -10,8 +10,12 @@ import UIKit
 
 class DefinitionTableViewCell: UITableViewCell {
     
-    func configureCell(title: String){
+    func configureCell(title: String) {
         textLabel?.text = title
         textLabel?.adjustsFontSizeToFitWidth = true
+    }
+    
+    class func reuseID() -> String {
+       return "DefinitionCell"
     }
 }

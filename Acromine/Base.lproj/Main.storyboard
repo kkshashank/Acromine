@@ -110,10 +110,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="searchAcronymBTN" destination="cdl-IV-V0q" id="86P-6v-ryk"/>
+                        <outlet property="searchAcronymBtn" destination="cdl-IV-V0q" id="KUn-CY-ySq"/>
                         <outlet property="searchBar" destination="vg0-S1-aUs" id="azZ-gs-gkP"/>
                         <outlet property="tableView" destination="st6-lY-OOs" id="Aap-jI-kd3"/>
-                        <outlet property="titleOfAcronym" destination="IRW-Nr-tcY" id="Ysy-eD-xro"/>
+                        <outlet property="titleOfAcronymLbl" destination="IRW-Nr-tcY" id="4xW-fd-Xyn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
